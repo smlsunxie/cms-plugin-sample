@@ -19,7 +19,7 @@ TodoApp = React.createClass({
     client.models.Route.action("cms-plugin-sample", "get", {}, function(error, result) {
       return that.setState({
         items: result,
-        text: nextText
+        text: ""
       });
     });
     return {

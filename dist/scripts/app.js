@@ -54,7 +54,7 @@ TodoApp = React.createClass({
     client.models.Route.action("cms-plugin-sample", "get", {}, function(error, result) {
       return that.setState({
         items: result,
-        text: nextText
+        text: ""
       });
     });
     return {
@@ -113,7 +113,7 @@ mountNode = document.getElementById("app");
 
 React.renderComponent(React.createElement(TodoApp, null), mountNode);
 
-}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_213dda03.js","/")
+}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e6d8e430.js","/")
 },{"./Todo":2,"buffer":4,"oMfpAn":7,"react":151}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
