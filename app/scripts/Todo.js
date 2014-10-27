@@ -6,7 +6,7 @@ TodoList = React.createClass({
   render: function() {
     var createItem;
     createItem = function(itemText) {
-      return React.createElement(React.DOM.li, null, itemText);
+      return React.createElement(React.DOM.li, null, (itemText != null ? itemText.name : void 0) || itemText);
     };
     return React.createElement(React.DOM.ul, null, this.props.items.map(createItem));
   }
@@ -33,14 +33,15 @@ TodoApp = React.createClass({
     });
   },
   handleSubmit: function(e) {
-    var nextItems, nextText;
+    var nextItems, nextText, that;
     e.preventDefault();
     nextItems = this.state.items.concat([this.state.text]);
     nextText = "";
+    that = this;
     return client.models.Route.action("cms-plugin-sample", "post", {
-      name: this.state.text
+      name: that.state.text
     }, function(error, result) {
-      return this.setState({
+      return that.setState({
         items: nextItems,
         text: nextText
       });

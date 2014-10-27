@@ -41,7 +41,7 @@ TodoList = React.createClass({
   render: function() {
     var createItem;
     createItem = function(itemText) {
-      return React.createElement(React.DOM.li, null, itemText);
+      return React.createElement(React.DOM.li, null, (itemText != null ? itemText.name : void 0) || itemText);
     };
     return React.createElement(React.DOM.ul, null, this.props.items.map(createItem));
   }
@@ -68,14 +68,15 @@ TodoApp = React.createClass({
     });
   },
   handleSubmit: function(e) {
-    var nextItems, nextText;
+    var nextItems, nextText, that;
     e.preventDefault();
     nextItems = this.state.items.concat([this.state.text]);
     nextText = "";
+    that = this;
     return client.models.Route.action("cms-plugin-sample", "post", {
-      name: this.state.text
+      name: that.state.text
     }, function(error, result) {
-      return this.setState({
+      return that.setState({
         items: nextItems,
         text: nextText
       });
@@ -112,7 +113,7 @@ mountNode = document.getElementById("app");
 
 React.renderComponent(React.createElement(TodoApp, null), mountNode);
 
-}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3f466ed5.js","/")
+}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_213dda03.js","/")
 },{"./Todo":2,"buffer":4,"oMfpAn":7,"react":151}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!

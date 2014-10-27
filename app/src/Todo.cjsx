@@ -3,7 +3,7 @@ Timer = require("./Timer")
 TodoList = React.createClass(
   render: ->
     createItem = (itemText) ->
-      <li>{itemText}</li>
+      <li>{itemText?.name || itemText}</li>
     <ul>{this.props.items.map(createItem)}</ul>
 
 )
@@ -28,10 +28,10 @@ TodoApp = React.createClass(
     nextItems = @state.items.concat([@state.text])
     nextText = ""
 
+    that = @
+    client.models.Route.action "cms-plugin-sample", "post", {name: that.state.text}, (error, result) ->
 
-    client.models.Route.action "cms-plugin-sample", "post", {name: @state.text}, (error, result) ->
-
-      @setState
+      that.setState
         items: nextItems
         text: nextText
 
