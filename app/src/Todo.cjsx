@@ -10,6 +10,13 @@ TodoList = React.createClass(
 
 TodoApp = React.createClass(
   getInitialState: ->
+    that = @
+
+    client.models.Route.action "cms-plugin-sample", "get", {}, (error, result) ->
+      that.setState
+        items: result
+        text: nextText
+
     items: []
     text: ""
 
@@ -21,9 +28,12 @@ TodoApp = React.createClass(
     nextItems = @state.items.concat([@state.text])
     nextText = ""
 
-    @setState
-      items: nextItems
-      text: nextText
+
+    client.models.Route.action "cms-plugin-sample", "post", {name: @state.text}, (error, result) ->
+
+      @setState
+        items: nextItems
+        text: nextText
 
   render: ->
 

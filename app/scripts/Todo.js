@@ -14,6 +14,14 @@ TodoList = React.createClass({
 
 TodoApp = React.createClass({
   getInitialState: function() {
+    var that;
+    that = this;
+    client.models.Route.action("cms-plugin-sample", "get", {}, function(error, result) {
+      return that.setState({
+        items: result,
+        text: nextText
+      });
+    });
     return {
       items: [],
       text: ""
@@ -29,9 +37,13 @@ TodoApp = React.createClass({
     e.preventDefault();
     nextItems = this.state.items.concat([this.state.text]);
     nextText = "";
-    return this.setState({
-      items: nextItems,
-      text: nextText
+    return client.models.Route.action("cms-plugin-sample", "post", {
+      name: this.state.text
+    }, function(error, result) {
+      return this.setState({
+        items: nextItems,
+        text: nextText
+      });
     });
   },
   render: function() {

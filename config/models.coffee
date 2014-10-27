@@ -1,5 +1,5 @@
 module.exports = [{
-  "name": "Form",
+  "name": "ModuleTodo",
 
   "properties": {
     "name": {
