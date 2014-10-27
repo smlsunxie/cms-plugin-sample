@@ -15,7 +15,7 @@ TodoApp = React.createClass(
     client.models.Route.action "cms-plugin-sample", "get", {}, (error, result) ->
       that.setState
         items: result
-        text: nextText
+        text: ""
 
     items: []
     text: ""
