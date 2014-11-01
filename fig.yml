@@ -3,7 +3,7 @@ mobius:
   working_dir: /mobius-cms
   command: "/bin/bash -c 'git pull origin master && gulp testmodule --module_name cms-plugin-sample'"
   volumes:
-  - ./:/mobius-cms/cms_modules/cms-plugin-sample
+    - ./:/mobius-cms/cms_modules/cms-plugin-sample
 
   ports:
     - "3000:3000"
